@@ -84,35 +84,25 @@ README.md files of their respective directory.
   * F\_s   : Magnitude of fixed salinity flux (+F\_s applied at source and -F\_s applied at sink)
 
 
-## Output files
+## Output files (for **fluidloop_v2**)
 
-Three output files are created in the working directory, whose prefix `$EXP` is set by the `name_exp` entry in the `namrun` section of the namelist:
+Two output files are created in the working directory, whose prefix `$EXP` is set by the `name_exp` entry in the `namrun` section of the namelist:
 
   1. `$EXP_config.txt` outputs the loop configuration, including namelist parameters and loop geometry factors
   
-  2. `$EXP_out_0D.txt` provides snapshots of basic 0D properties of the loop at a frequency set by the `niter_write_0D` entry in the `namrun` section of the namelist:
-    * niter
-    * time
-    * velocity
-    * mass
+  2. `$EXP_output.nc` provides snapshots of the properties of the loop at a frequency set by the `niter_write` entry in the `namrun` section of the namelist:
+    * index: loop index, `=1` at the top of the loop, then increasing in the clockwise direction, up to `nl`
+    * record: number of snapshots
+    * w: velocity
+    * z: vertical height of tracer grid points
+    * time: non-dimensional time variable for each record
+    * theta: non-dimensional temperature (index from `1` to `nl`)
+    * salt: salinity (index from `1` to `nl`)
+    * sigma: density (index from `1` to `nl`)
+    * N2: stratification, defined on a staggered grid (index from `0` to `nl-1`, with staggered index `0` to the left of the tracer index `1`)
     
-  3. `$EXP_out_1D.txt` provides snapshots of basic 1D properties of the loop at a frequency set by the `niter_write_1D` entry in the `namrun` section of the namelist
-    * niter: number of iteration
-    * j: loop index (varies from 1 to nl)
-    * theta: temperature
-    * salt: salinity
-    * sigma: density
-    
-  Examples of outputs are provided and can be used to test that the program has been properly installed. Note that the program execution will fail if output files already exist.
-
-3. Three output files are created in the working directory, whose prefix `$EXP` is set by the `name_exp` entry in the `namrun` section of the namelist:
-  1. `$EXP_config.txt` outputs the loop configuration, including namelist parameters and loop geometry factors
-  2. `$EXP_out_0D.txt` provides snapshots of basic 0D properties of the loop at a frequency set by the `niter_write_0D` entry in the `namrun` section of the namelist
-  3. `$EXP_out_1D.txt` provides snapshots of basic 1D properties of the loop at a frequency set by the `niter_write_1D` entry in the `namrun` section of the namelist
-  More details on the format of these output files is provided in the section **Output files** below.
+  3. `$EXP_restart.txt` gives a snapshot of the last time step of the run, that can be used as an init_state file. 
   
-  Examples of outputs are provided and can be used to test that the program has been properly installed. Note that the program execution will fail if output files already exist.
-
 
 ## Matlab tools
 
