@@ -1,0 +1,41 @@
+ fluidloop.f90, version 1.0
+     available on GitHub: http://github.com/fabien-roquet/loop
+     F. Roquet 2016
+     GNU General Public License
+ 
+ 
+ Namelist parameters:
+&NAMRUN
+ NAME_EXP="TEST                                              ",
+ NL=360        ,
+ NITER_T1=10000      ,
+ NITER_MAX=10000      ,
+ NITER_WRITE=1000       ,
+ USE_NETCDF=T,
+ INIT_FROM_FILE=T,
+ INIT_STATE="init_state.txt                                    ",
+ /
+&NAMCONFIG
+ ZF= 0.50000000000000000     ,
+ R= 0.10000000000000001     ,
+ LAMBDA=  0.0000000000000000     ,
+ MU=  0.0000000000000000     ,
+ FOLDTRUE=T,
+ CONSTANT_DIFFUSION=F,
+ IMPLICIT_DIFFUSION=T,
+ /
+&NAMFORCING
+ TAU=  0.0000000000000000     ,
+ REF_T=  5.0000000000000000     ,
+ XI_T=  1.0000000000000000     ,
+ F_S= 0.14999999999999999     ,
+ /
+ 
+ Loop index of sink  : jsink  =          59
+ Loop index of source: jsource=         301
+ Actual height of source/sink: z(jsink)=  0.51503807491005416     
+ Initialization complete
+ w_n init =  -6.4413799999999993E-002
+ Emix  init =   2.6450225321957864E-002
+ 
+ last velocity  -6.4429271941006575E-002 at time=   1.0000000000000000     

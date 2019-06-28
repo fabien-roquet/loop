@@ -1,0 +1,29 @@
+!! namelist for the 1-D thermohaline loop, fluidloop.f90, version 1.0
+
+&namrun
+  name_exp       = 'TEST'           ! name of experiment (used to name outputs). file max characters: 50
+  nl             = 360              ! number of points around loop
+  niter_t1       = 10000            ! number of iterations at t=1
+  niter_max      = 10000  		  	  ! maximum number of timesteps
+  niter_write    = 1000             ! number of iterations between writing output of output_1D
+  use_netcdf     = .TRUE.           ! out put in netcdf or text file
+  init_from_file = .TRUE.           ! start from init_state (T) or from rest (F)
+  init_state = 'init_state.txt'     ! initial state for temperature, salinity and velocity. max characters: 50
+/
+
+&namconfig
+  Zf = 0.5               	  	      ! height of source and sink of buoyancy -1<Zf<1
+  R = 0.1                           ! inverse Rayleigh number
+  lambda = 0.                     	! cabbeling parameter
+  mu = 0.                           ! thermobaric parameter
+  foldtrue = .TRUE.               	! Is the loop folded or not
+  constant_diffusion = .FALSE.       ! Is the diffusion constant or not
+  implicit_diffusion = .TRUE.       ! solve diffusion and forcing implicit (.FALSE. explicit)
+/
+
+&namforcing
+  tau   = 0.                		    ! applied torque
+  ref_t = 5.             	  	      ! Reference toward which temperature is relaxed
+  xi_t  = 1.                        ! Temperature relaxation parameter
+  F_s   = 0.15              	  	  ! Strength of fixed salinity forcing
+/
