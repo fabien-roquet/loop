@@ -1,6 +1,6 @@
-# fluidloop, version 1
+# fluidloop, version 2
 Thermohaline loop, written in Fortran.
-Instructions to test the fluidloop program (version 1)
+Instructions to test the fluidloop program (version 2)
 
 ## Motivation
 
@@ -79,7 +79,7 @@ Two output files are created in the working directory, whose prefix `$EXP` is se
   3. `$EXP_restart.txt` gives a snapshot of the last time step of the run, that can be used as an init_state file. 
   
      
-## Configuration files (for **fluidloop_v2**)
+## Configuration files
 
   1. The namelist is the configuration file that allows to configure the loop model. The structure of the namelist must be as follows:
   
