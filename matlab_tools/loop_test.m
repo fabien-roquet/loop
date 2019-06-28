@@ -5,7 +5,7 @@
 %  4) load model outputs and compare with theoretical values
 %
 % loop toolbox, distributed on GitHub: http://github.com/fabien-roquet/loop
-% F. Roquet 2016
+% F. Roquet 2019
 % GNU General Public License
 
 % test configuration
@@ -52,10 +52,10 @@ title('Torque curves');
 loop_init_state('init_state.txt',w1,theta1,salt1);
 
 % read output files of the loop model and compare loop outputs with theory
-[out_0d,out_1d]=loop_read_out('TEST');
+data=loop_read_out('TEST');
 [torque1,tau1,theta1,salt1] = loop_equilibrium(w1,R,nl,Zf,foldtrue,lambda,mu,ref_t,xi_t,F_s);
 disp(' ');
-disp(sprintf('Difference between loop output and theoretical solution of STATE1 velocity   : %4.2g',out_0d.w(end)-w1));
-disp(sprintf('STD between loop output and theoretical solution of STATE1 theta distribution: %4.2g',std(out_1d.theta(:,end)-theta1)));
-disp(sprintf('STD between loop output and theoretical solution of STATE1 salt  distribution: %4.2g',std(out_1d.salt(:,end)-salt1)));
-figure(2), plot(1:nl,out_1d.theta(:,end),1:nl,out_1d.salt(:,end)),legend('STATE1 theta','STATE1 salt')
+disp(sprintf('Difference between loop output and theoretical solution of STATE1 velocity   : %4.2g',data.w(end)-w1));
+disp(sprintf('STD between loop output and theoretical solution of STATE1 theta distribution: %4.2g',std(data.theta(:,end)-theta1)));
+disp(sprintf('STD between loop output and theoretical solution of STATE1 salt  distribution: %4.2g',std(data.salt(:,end)-salt1)));
+figure(2), plot(1:nl,data.theta(:,end),1:nl,data.salt(:,end)),legend('STATE1 theta','STATE1 salt')
